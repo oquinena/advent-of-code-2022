@@ -7,7 +7,7 @@ import (
 )
 
 func scores(r string) (int, int) {
-	line := strings.Split(r, "\n")
+	lines := strings.Split(r, "\n")
 	score1, score2 := 0, 0
 
 	possibleScores := map[string]struct{ a, b int }{
@@ -22,16 +22,15 @@ func scores(r string) (int, int) {
 		"C Z": {6, 7},
 	}
 
-	for _, v := range line {
-		score1 += possibleScores[v].a
-		score2 += possibleScores[v].b
+	for _, l := range lines {
+		score1 += possibleScores[l].a
+		score2 += possibleScores[l].b
 	}
 
 	return score1, score2
 }
 
 func main() {
-
 	f, err := os.ReadFile("input.txt")
 	if err != nil {
 		fmt.Println(err)
